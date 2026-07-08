@@ -163,6 +163,11 @@ body.dark .card:hover {
   transform: translateY(1px);
 }
 
+/* ใน style.css */
+.card__note {
+  margin-top: 16px; /* บรรทัดนี้จะช่วยเว้นระยะห่างจากปุ่มที่อยู่ด้านบน */
+}
+
 /* ===== ส่วนท้าย ===== */
 .card__footer {
   margin-top: 2rem;
