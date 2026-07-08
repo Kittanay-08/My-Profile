@@ -18,9 +18,12 @@ toggleButton.addEventListener('click', () => {
 // ===== Footer: ปีอัตโนมัติด้วย template literal =====
 const currentYear = new Date().getFullYear();
 footer.textContent = `© ${currentYear} — Deploy ด้วย GitHub Pages 🚀`;
+<<<<<<< HEAD
 
 // ===== ➕ Event: อัปเดตชื่อตามกล่องข้อความแบบ Real-time =====
 nameInput.addEventListener('input', () => {
   // หากในกล่องข้อความว่างเปล่า ให้ใส่ชื่อเริ่มต้นคืนกลับไป
   cardName.textContent = nameInput.value.trim() !== '' ? nameInput.value : 'Kittanay Donsaeng';
 });
+=======
+>>>>>>> de064e49539ebf0dcd6f7ef7a575a21dbcfc19bc
