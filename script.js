@@ -17,7 +17,7 @@ toggleButton.addEventListener('click', () => {
  
 // ===== Footer: ปีอัตโนมัติด้วย template literal =====
 const currentYear = new Date().getFullYear();
-footer.textContent = `© ${currentYear} — Deploy ด้วย GitHub Pages 🚀`;
+footer.textContent = `© ${currentYear} — Deploy By GitHub Pages 🚀`;
 
 
 // ===== ➕ Event: อัปเดตชื่อตามกล่องข้อความแบบ Real-time =====
