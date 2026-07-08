@@ -1,0 +1,176 @@
+/* ===== ตัวแปรสี (CSS Custom Properties) ===== */
+:root {
+  --bg: #f4f6fb;
+  --card-bg: #ffffff;
+  --text: #1f2933;
+  --text-muted: #64748b; /* สีข้อความรอง สำหรับ Bio และ Footer */
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08); /* เงาที่นุ่มและฟุ้งขึ้น */
+}
+
+/* ธีมมืด: สลับด้วยการเติม class ที่ <body> ผ่าน JS */
+body.dark {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --accent: #3b82f6; /* ปรับสี accent ให้สว่างขึ้นในโหมดมืด */
+  --accent-hover: #60a5fa;
+  --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Layout ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans Thai', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  transition: background-color 0.4s ease; /* ปรับให้ transition นุ่มนวลขึ้น */
+}
+
+/* ===== การ์ดนามบัตร ===== */
+.card {
+  background-color: var(--card-bg);
+  width: min(420px, 90vw);
+  padding: 3rem 2.5rem; /* เพิ่มพื้นที่ว่างให้ดูไม่อึดอัด */
+  border-radius: 24px; /* ขอบโค้งมนขึ้น ดูทันสมัย */
+  box-shadow: var(--shadow);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* เพิ่มแถบสี Gradient ด้านบนของการ์ด */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), #8b5cf6, #ec4899);
+}
+
+/* เอฟเฟกต์ตอนชี้เมาส์ที่การ์ด */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+}
+body.dark .card:hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== รูปโปรไฟล์ ===== */
+.card__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* ทำขอบให้ดูเป็นวงแหวนมีมิติ */
+  border: 4px solid var(--card-bg);
+  box-shadow: 0 0 0 3px var(--accent);
+  padding: 2px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card__avatar:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+/* ===== ข้อมูลตัวอักษร ===== */
+.card__name {
+  margin-top: 1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.card__title {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase; /* ตัวพิมพ์ใหญ่ทำให้ดูโปร */
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.card__bio {
+  margin-top: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ===== ลิงก์ติดต่อ (Github & Email) ===== */
+.card__links {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* เพิ่มระยะห่างให้แยกกันชัดเจนขึ้น */
+}
+
+.card__links a {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none; /* เอาเส้นใต้ข้อความออก */
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+/* เอฟเฟกต์ตอนเอาเมาส์ชี้ จะขยับขึ้นเล็กน้อยและเปลี่ยนสี */
+.card__links a:hover {
+  color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* ===== ปุ่มกด ===== */
+.card__button {
+  margin-top: 2rem;
+  padding: 0.8rem 2.5rem;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 99px; /* ปุ่มทรงแคปซูล (Pill shape) */
+  background-color: var(--accent);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px -3px rgba(37, 99, 235, 0.4); /* เพิ่มเงาสีเดียวกับปุ่ม */
+}
+
+.card__button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -4px rgba(37, 99, 235, 0.5);
+}
+
+.card__button:active {
+  transform: translateY(1px);
+}
+
+/* ===== ส่วนท้าย ===== */
+.card__footer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(0, 0, 0, 0.05); /* เพิ่มเส้นคั่นบางๆ */
+  padding-top: 1rem;
+}
+body.dark .card__footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
